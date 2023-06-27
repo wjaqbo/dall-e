@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import preview from '../assets/image-placeholder.svg';
 
+import preview from '../assets/image-placeholder.svg';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
 import photoMock from '../assets/samples/img-3.png';
@@ -16,7 +16,7 @@ export default function CreatePost() {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        // const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        // const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/dalle`, {
         //   method: 'POST',
         //   headers: { 'Content-Type': 'application/json' },
         //   body: JSON.stringify({ prompt: form.prompt }),
@@ -43,13 +43,16 @@ export default function CreatePost() {
       setLoading(true);
 
       try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(form),
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/api/v1/post`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+          }
+        );
         await response.json();
         navigate('/');
       } catch (error) {
