@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import { Card, FormField, Loader } from '../components';
 
 interface RenderCardsProps {
-  data: [];
+  data: IPost[];
   title: string;
 }
 
@@ -17,9 +17,9 @@ const RenderCards = ({ data, title }: RenderCardsProps) => {
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const [allPosts, setAllPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState<IPost[]>([]);
   const [searchText, setSearchText] = useState('');
-  const [searchResults, setSearchedResults] = useState<any>(null);
+  const [searchResults, setSearchedResults] = useState<IPost[]>([]);
   const [searchTimeout, setSearchTimeout] = useState<any>(null);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 // import { download } from '../assets';
 import { downloadImage } from '../utils';
 
-export default function Card({ _id, name, prompt, photo }) {
+export default function Card({ _id, name, prompt, photo }: IPost) {
   return (
     <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
       <img
